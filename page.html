@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id="content" ng-app="myApp" ng-controller="myController" >
+            <nav class="navbar navbar-default" id="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <p class="navbar-text">Pathfinder Helper</p>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Spell Lists</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <input id="searchBox" type="text" ng-model="search_term" placeholder="Enter your search terms">
+            <tr>
+                <th ng-repeat="x in titles | filter : search_term">
+
+                <!-- Put display stuff here when you figure it out -->
+                </th>
+            </tr>
+            <script src="code.js"></script>
+        </div>
+    </body>
+</html>
