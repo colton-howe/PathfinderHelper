@@ -1,9 +1,9 @@
 var app = angular.module('myApp', []);
-app.controller('myController', function($scope){
-    $scope.titles [
+app.controller('myController', function($scope, $http){
+
+    $scope.titles = [
             "Name",
             "School",
-            "Subschool",
             "Level",
             "Casting Time",
             "Components",
@@ -16,5 +16,17 @@ app.controller('myController', function($scope){
             "Target"
     ];
 
-    $scope.spells = [];
+    var allSpells = [];
+    $http({
+        method: 'GET',
+        url: 'spells.json',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }).then(function (response) {
+        for(var data in response.data){
+            allSpells.push(data);
+        }
+    });
+    $scope.spells = allSpells;
 });
