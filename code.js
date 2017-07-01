@@ -12,7 +12,7 @@ app.controller('myController', function($scope, $http){
             "Duration",
             "Saving Throw",
             "Spell Resistance",
-            "Description",
+            "Description"
     ];
 
     var allSpells = [];
@@ -21,7 +21,7 @@ app.controller('myController', function($scope, $http){
         for(var i = 0; i < Object.keys(response.data).length; i++){
             var data = response.data[i];
             var schoolText;
-            if(data.fields.subschool != ""){
+            if(data.fields.subschool == ""){
                 schoolText = data.fields.school;
             } else {
                 schoolText = data.fields.school + " (" + data.fields.subschool + ")";

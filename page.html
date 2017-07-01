@@ -25,19 +25,19 @@
                 </div>
             </nav>
             <input id="searchBox" type="text" ng-model="search_term" placeholder="Enter your search terms">
-            <table>
+            <table class="table-condensed">
                 <tr>
-                    <th ng-repeat="x in titles">{{x}}<th>
+                    <th ng-repeat="x in titles">{{x}}</th>
                 </tr>
                 <tr ng-repeat="y in spells | filter : search_term">
                     <td class="name" >{{y.name}}</td>
-                    <td class="school">{{y.school}}</td>
+                    <td class="school" ng-bind-html="y.school"></td>
                     <td class="level">{{y.level}}</td>
                     <td class="time">{{y.casting_time}}</td>
                     <td class="components" ng-bind-html="y.components"></td>
                     <td class="range">{{y.range}}</td>
                     <td class="area">{{y.area}}</td>
-                    <td class="duration">{{y.duration}}</td>
+                    <td class="duration" ng-bind-html="y.duration"></td>
                     <td class="saving" ng-bind-html="y.saving_throw"></td>
                     <td class="resist">{{y.spell_resistance}}</td>
                     <td class="desc" ng-bind-html="y.description"></td>
