@@ -9,6 +9,46 @@ table {
     width: 100%;
 }
 
+td {
+    text-align: left;
+}
+
+.name {
+    max-width: 100px;
+}
+
+.level {
+    max-width: 50px;
+}
+
+.time {
+    max-width: 50px;
+}
+
+.components {
+    max-width: 50px;
+}
+
+.range {
+    max-width: 50px;
+}
+
+.area {
+    max-width: 50px;
+}
+
+.duration {
+    max-width: 100px;
+}
+
+.saving {
+    max-width: 50px;
+}
+
+.resist {
+    max-width: 20px;
+}
+
 th {
     padding: 10px 20px 10px;
 }

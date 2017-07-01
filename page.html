@@ -6,6 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="style.css">
@@ -28,21 +29,18 @@
                 <tr>
                     <th ng-repeat="x in titles">{{x}}<th>
                 </tr>
-                <tr>
-                    <td>{{spells}}</td>
-                    <!--
-                    <td>{{spell.name}}</td>
-                    <td>{{spell.school}}</td>
-                    <td>{{spell.level}}</td>
-                    <td>{{spell.casting_time}}</td>
-                    <td>{{spell.components}}</td>
-                    <td>{{spell.range}}</td>
-                    <td>{{spell.area}}</td>
-                    <td>{{spell.duration}}</td>
-                    <td>{{spell.saving_throw}}</td>
-                    <td>{{spell.spell_resistance}}</td>
-                    <td>{{spell.description}}</td>
-                    <td>{{spell.target}}</td>-->
+                <tr ng-repeat="y in spells | filter : search_term">
+                    <td class="name" >{{y.name}}</td>
+                    <td class="school">{{y.school}}</td>
+                    <td class="level">{{y.level}}</td>
+                    <td class="time">{{y.casting_time}}</td>
+                    <td class="components" ng-bind-html="y.components"></td>
+                    <td class="range">{{y.range}}</td>
+                    <td class="area">{{y.area}}</td>
+                    <td class="duration">{{y.duration}}</td>
+                    <td class="saving" ng-bind-html="y.saving_throw"></td>
+                    <td class="resist">{{y.spell_resistance}}</td>
+                    <td class="desc" ng-bind-html="y.description"></td>
                 </tr>
             </table>
             <script src="code.js"></script>

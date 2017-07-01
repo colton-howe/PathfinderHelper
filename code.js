@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize']);
 app.controller('myController', function($scope, $http){
 
     $scope.titles = [
@@ -13,20 +13,34 @@ app.controller('myController', function($scope, $http){
             "Saving Throw",
             "Spell Resistance",
             "Description",
-            "Target"
     ];
 
     var allSpells = [];
-    $http({
-        method: 'GET',
-        url: 'spells.json',
-        headers: {
-            'Content-type': 'application/json'
-        }
-    }).then(function (response) {
-        for(var data in response.data){
-            allSpells.push(data);
-        }
+
+    $http.get("https://raw.githubusercontent.com/colton-howe/PathfinderHelper/master/spells.json").then(function (response) {
+        for(var i = 0; i < Object.keys(response.data).length; i++){
+            var data = response.data[i];
+            var schoolText;
+            if(data.fields.subschool != ""){
+                schoolText = data.fields.school;
+            } else {
+                schoolText = data.fields.school + " (" + data.fields.subschool + ")";
+            }
+            allSpells.push({name: data.fields.name,
+                school: schoolText,
+                level: data.fields.level,
+                casting_time: data.fields.casting_time,
+                components: data.fields.components,
+                range: data.fields.range,
+                area: data.fields.area,
+                duration: data.fields.duration,
+                saving_throw: data.fields.saving_throw,
+                spell_resistance: data.fields.spell_resistance,
+                description: data.fields.description,
+            });
+        } 
+        $scope.spells = allSpells;
+    }, function(reason) {
+        $scope.spells = reason;
     });
-    $scope.spells = allSpells;
 });
